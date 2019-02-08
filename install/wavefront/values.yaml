@@ -15,3 +15,5 @@ metrics:
   prefix: istio
   http: true
   tcp: true
+
+namespace: istio-system

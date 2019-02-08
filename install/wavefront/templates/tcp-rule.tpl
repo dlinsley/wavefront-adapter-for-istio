@@ -5,7 +5,11 @@ apiVersion: "config.istio.io/v1alpha2"
 kind: rule
 metadata:
   name: wavefront-tcp-rule
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
 spec:
   match: context.protocol == "tcp"
   actions:

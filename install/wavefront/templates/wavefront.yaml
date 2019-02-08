@@ -4,9 +4,13 @@ apiVersion: "config.istio.io/v1alpha2"
 kind: adapter
 metadata:
   name: wavefront
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
 spec:
-  description: 
+  description:
   session_based: false
   templates:
   - metric

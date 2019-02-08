@@ -5,7 +5,11 @@ apiVersion: "config.istio.io/v1alpha2"
 kind: instance
 metadata:
   name: tcpsentbytes
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
 spec:
   template: metric
   params:
@@ -19,7 +23,11 @@ apiVersion: "config.istio.io/v1alpha2"
 kind: instance
 metadata:
   name: tcpreceivedbytes
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
 spec:
   template: metric
   params:

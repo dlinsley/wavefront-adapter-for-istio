@@ -5,7 +5,11 @@ apiVersion: "config.istio.io/v1alpha2"
 kind: rule
 metadata:
   name: wavefront-http-rule
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
 spec:
   actions:
   - handler: wavefront-handler.istio-system

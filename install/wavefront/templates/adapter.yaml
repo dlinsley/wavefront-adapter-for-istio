@@ -3,7 +3,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: wavefront
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
   labels:
     app: wavefront
 spec:
@@ -21,7 +25,11 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: wavefront
+  {{- if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
   namespace: istio-system
+  {{- end }}
   labels:
     app: wavefront
 spec:
